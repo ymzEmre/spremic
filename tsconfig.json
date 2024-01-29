@@ -1,10 +1,9 @@
-// tsconfig.json
-
 {
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "strict": true,
-    "typeRoots": ["./types"]
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true
   }
 }

@@ -1,23 +1,22 @@
-// webpack.config.js
-
 const path = require('path');
 
 module.exports = {
-  entry: './src/speechRecognition.ts',
-  output: {
-    filename: 'bundle.js', // Bu dosyanın adı doğru olmalı
-    path: path.resolve(__dirname, 'dist'),
-  },
-  resolve: {
-    extensions: ['.ts', '.js'],
-  },
+  mode: 'production',
+  entry: './src/index.ts',
   module: {
     rules: [
       {
-        test: /\.ts$/,
+        test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/,
       },
     ],
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+  },
+  output: {
+    filename: 'index.js',
+    path: path.resolve(__dirname, 'dist'),
   },
 };
