@@ -1,6 +1,5 @@
-import Spremic from './SpeechRecognitionHandler';
+import Test from './Test'
 
-const rc = new Spremic()
-rc.initializeEventListeners()
-
-export default Spremic
+export {
+  Test
+}
