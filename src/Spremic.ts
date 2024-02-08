@@ -1,4 +1,4 @@
-class Test {
+export default class Spremic {
   recognition: any
   lang: any
   continuous: any
@@ -31,13 +31,3 @@ class Test {
     console.log('Speech Recognition Result:', transcript)
   }
 }
-
-const test = new Test()
-test.start()
-
-test.onresult = function (event: any) {
-  const transcript = event.results[0][0].transcript
-  console.log('Speech Recognition Result:', transcript)
-}
-
-export default Test
