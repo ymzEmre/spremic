@@ -1,33 +1,67 @@
-export default class Spremic {
-  recognition: any
-  lang: any
-  continuous: any
-  interimResults: any
-  onresult: any
-  transcriptRes: any
+interface SpeechRecognition {
+  startRecognition(): void
+  stopRecognition(): void
+  getRecognizedText(): string
+  textToSpeech(text: string): void
+}
+
+export default class Spremic implements SpeechRecognition {
+  private recognition: SpeechRecognition | null = null
+  private recognizedText: string = ''
+  private onRecognitionEndCallback: (() => void) | null = null
 
   constructor() {
-    this.recognition = new (window as any).webkitSpeechRecognition()
-    this.lang = 'en-US'
-    this.continuous = true
-    this.interimResults = false
-    this.onresult = function (event: any) {
-      const transcript = event.results[0][0].transcript
-      this.transcriptRes = transcript
-      console.log('Speech Recognition Result:', transcript)
+    if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+      this.recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)()
+      this.setupRecognition()
+    } else {
+      console.error('Speech recognition is not supported in this browser.')
     }
   }
-  start() {
-    this.recognition.lang = this.lang
-    this.recognition.continuous = this.continuous
-    this.recognition.interimResults = this.interimResults
-    this.recognition.onresult = this.onresult
-    this.recognition.start()
-    console.log('Speech Recognition Started')
+
+  private setupRecognition() {
+    if (this.recognition) {
+      this.recognition.continuous = true
+
+      this.recognition.onresult = (event: SpeechRecognitionEvent) => {
+        const lastResult = event.results[event.results.length - 1]
+        this.recognizedText = lastResult[0].transcript
+      }
+
+      this.recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
+        console.error('Speech recognition error:', event.error)
+      }
+
+      this.recognition.onend = () => {
+        if (this.onRecognitionEndCallback) {
+          this.onRecognitionEndCallback()
+        }
+      }
+    }
   }
 
-  handleResult(event: any) {
-    const transcript = event.results[0][0].transcript
-    console.log('Speech Recognition Result:', transcript)
+  startRecognition(): void {
+    if (this.recognition) {
+      this.recognition.start()
+    }
+  }
+
+  stopRecognition(): void {
+    if (this.recognition) {
+      this.recognition.stop()
+    }
+  }
+
+  getRecognizedText(): string {
+    return this.recognizedText
+  }
+
+  textToSpeech(text: string): void {
+    const utterance = new SpeechSynthesisUtterance(text)
+    window.speechSynthesis.speak(utterance)
+  }
+
+  public set onRecognitionEnd(callback: () => void) {
+    this.onRecognitionEndCallback = callback
   }
 }
