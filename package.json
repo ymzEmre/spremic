@@ -17,15 +17,15 @@
     "webpack": "^5.90.1",
     "webpack-cli": "^5.1.4"
   },
-  "keywords": [
-    "speech",
-    "recognition",
-    "voice"
-  ],
   "author": "ymzEmre",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ymzEmre/spremic.git"
-  }
+  },
+  "keywords": [
+    "speech",
+    "recognition",
+    "voice"
+  ]
 }

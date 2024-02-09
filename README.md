@@ -46,7 +46,7 @@ import { Spremic } from 'spremic'
 const Spremic = new Spremic()
 ```
 
-### `startRecognition()`
+##### `startRecognition()`
 
 This method starts the speech recognition.
 
@@ -54,7 +54,7 @@ This method starts the speech recognition.
 Spremic.startRecognition()
 ```
 
-### `stopRecognition()`
+##### `stopRecognition()`
 
 This method stops the speech recognition.
 
@@ -62,7 +62,7 @@ This method stops the speech recognition.
 Spremic.stopRecognition()
 ```
 
-### `getRecognizedText()`
+##### `getRecognizedText()`
 
 This method returns the recognized text.
 
@@ -70,7 +70,7 @@ This method returns the recognized text.
 const recognizedText = Spremic.getRecognizedText()
 ```
 
-### `textToSpeech()`
+##### `textToSpeech()`
 
 This method transforms the recognized text into speech.
 
@@ -78,7 +78,7 @@ This method transforms the recognized text into speech.
 Spremic.textToSpeech('Hello World')
 ```
 
-### Sample Usage
+#### Sample Usage
 
 ```JavaScript
 
