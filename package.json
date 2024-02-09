@@ -1,16 +1,13 @@
 {
   "name": "spremic",
-  "version": "0.0.45",
-  "description": "",
+  "version": "0.0.46",
+  "description": "A simple JavaScript speech recognition library.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "webpack",
     "test": "jest"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@types/jest": "^29.5.12",
     "jest": "^29.7.0",
@@ -19,5 +16,16 @@
     "typescript": "^5.3.3",
     "webpack": "^5.90.1",
     "webpack-cli": "^5.1.4"
+  },
+  "keywords": [
+    "speech",
+    "recognition",
+    "voice"
+  ],
+  "author": "ymzEmre",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ymzEmre/spremic.git"
   }
 }
