@@ -1,5 +1,3 @@
-// Spremic.test.js
-
 import Spremic from '../src/Spremic'
 
 describe('Spremic', () => {
@@ -38,9 +36,7 @@ describe('Spremic', () => {
   test('onRecognitionEndCallback should be called on recognition end', () => {
     const callbackMock = jest.fn()
     spremicInstance.onRecognitionEnd = callbackMock
-    spremicInstance.recognition.onend() // Simulate recognition end
+    spremicInstance.recognition.onend()
     expect(callbackMock).toHaveBeenCalled()
   })
-
-  // You can add more tests based on your requirements
 })
