@@ -25,7 +25,7 @@ having to adjust the inital configurations every time I start a new project.
 
 ## Features
 
-- leightweight 6kb minified & gzipped
+- leightweight 4kb minified & gzipped
 - Easy to use
 - Simple to integrate
 - No dependencies
